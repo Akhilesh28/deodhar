@@ -1,0 +1,17 @@
+<body ng-controller="ExamCtrl">
+	<div class="container">
+		<div class="" ng-init="getQues()">
+			<h4><strong>Q {{ questionNo }})</strong> {{ questionText }} </h4>
+		</div>
+		<div class="">
+			<form name="exam">
+				<label><input type="radio" ng-model="radio.answer" name="options" ng-value="'A'">A) {{optionA}}</label><br>
+				<label><input type="radio" ng-model="radio.answer" name="options" ng-value="'B'">B) {{optionB}}</label><br>
+				<label><input type="radio" ng-model="radio.answer" name="options" ng-value="'C'">C) {{optionC}}</label><br>
+				<label><input type="radio" ng-model="radio.answer" name="options" ng-value="'D'">D) {{optionD}}</label><br>
+				<p>Selected : {{radio.answer}}</p>
+				<button ng-click="submitAnswer(radio.answer)" class="btn btn-success">Submit</button>
+			</form>
+		</div>
+	</div>
+</body>

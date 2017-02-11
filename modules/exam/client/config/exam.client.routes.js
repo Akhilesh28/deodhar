@@ -3,7 +3,7 @@
 // Setting up route
 angular.module('exam').config(['$stateProvider',
   function ($stateProvider) {
-    // Articles state routing
+    // Exam state routing
     $stateProvider
       .state('exam', {
         abstract: true,
@@ -13,11 +13,13 @@ angular.module('exam').config(['$stateProvider',
       })
       .state('exam.list', {
         url: '',
-        templateUrl: 'modules/exam/client/views/exam.client.view.html'
+        templateUrl: 'modules/exam/client/views/exam.client.view.html',
+        controller: 'ExamCtrl'
       })
       .state('/result', {
         url: '/result',
-        templateUrl: 'modules/exam/client/views/exam-result.client.view.html'
+        templateUrl: 'modules/exam/client/views/exam-result.client.view.html',
+        controller: 'ExamCtrl'
       });
   }
 ]);

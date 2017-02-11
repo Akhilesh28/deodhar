@@ -5,6 +5,8 @@ angular
 .controller('ExamCtrl', ['$scope', '$stateParams', '$location', 'Authentication', '$http',
   function ($scope, $stateParams, $location, Authentication, $http) {
     
+    // console.log(Authentication.user._id);
+    $scope.authentication = Authentication;
     var ec = this;
     var qtnCounter = 1;
     var correctAnswer = "";
@@ -37,17 +39,21 @@ angular
   		});
   	};
 
-  	$scope.submitAnswer = function (selected) {
+  	$scope.submitAnswer = function (selected, user) {
       // $scope.answer = 'A';  		
-      console.log(selected + " " + $scope.questionNo + " " + qtnCounter);
+      console.log(user + " " + $scope.questionNo + " " + qtnCounter);
       var userInput = {
-        qtnNo: $scope.questionNo,
-        userAnswer: selected,
-        correctAnswer: correctAnswer
+        userID: user,
+        examEvent: [{
+          qtnNo: $scope.questionNo,
+          userAnswer: selected,
+          correctAnswer: correctAnswer
+        }]
       };
       $http.post('exam/submit', userInput).success(function (response) {
         // console.log(response);
       }).error(function (response) {
+        console.log(response);
         $scope.alertMessage = response.message;
       });
       if (qtnCounter > 5) {
@@ -57,5 +63,9 @@ angular
         $scope.getQues();
       }
   	};
+    $scope.result = function () {
+      console.log('result');
+
+    };
   }
 ]);

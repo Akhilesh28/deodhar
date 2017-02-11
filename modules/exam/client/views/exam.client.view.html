@@ -10,7 +10,7 @@
 				<label><input type="radio" ng-model="radio.answer" name="options" ng-value="'C'">C) {{optionC}}</label><br>
 				<label><input type="radio" ng-model="radio.answer" name="options" ng-value="'D'">D) {{optionD}}</label><br>
 				<p>Selected : {{radio.answer}}</p>
-				<button ng-click="submitAnswer(radio.answer)" class="btn btn-success">Submit</button>
+				<button ng-click="submitAnswer(radio.answer, authentication.user._id)" class="btn btn-success">Submit</button>
 			</form>
 		</div>
 	</div>

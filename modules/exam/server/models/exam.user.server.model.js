@@ -10,15 +10,21 @@ var mongoose = require('mongoose'),
  * User Answer Schema
  */
 var userAnswerSchema = new Schema({
-	qtnNo: {
-		type: Number
+	userID: {
+		type: String,
+		unique: true
 	},
-	userAnswer: {
-		type: String
-	},
-	correctAnswer: {
-		type: String
-	}
+	examEvent: [{
+		qtnNo: {
+			type: Number
+		},
+		userAnswer: {
+			type: String
+		},
+		correctAnswer: {
+			type: String
+		}
+	}]
 });
 
 mongoose.model('userAnswerS', userAnswerSchema);
